@@ -68,12 +68,13 @@ int main( int argc, char **argv )
 	timeout(0);
 	clear();
 
+	for(;;) {
+    len = read( pathCom, &cc_from_kurumi, sizeof(cc_from_kurumi) );
+		if (len <= 0 ) break;
+	}
+
   stat_cur = stat_org & (~TIOCM_DTR);	// DTR to HIGH
   ret = ioctl( pathCom, TIOCMSET, &stat_cur );  // clear DTR
-
-	fprintf( stdout, "115200 bps only!\n" );
-	fprintf( stdout, "Push a CTRL-C key for a termnation\n" );
-	//fflush(stdout);
 
 	for(;;) {
 		len = read( pathCom, &cc_from_kurumi, sizeof(cc_from_kurumi) );
