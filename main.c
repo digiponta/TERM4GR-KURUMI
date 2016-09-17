@@ -15,7 +15,6 @@
 #include <sys/ioctl_compat.h>
 #include <termios.h>
 
-
 int main( int argc, char **argv )
 {
 	// a.out <device>
@@ -28,8 +27,8 @@ int main( int argc, char **argv )
   unsigned int stat_org, stat_cur;
 
 	if ( argc < 2 ) {
-					fprintf( stderr, "less arg (%d)\n", argc );
-					exit(-1);
+		fprintf( stderr, "less arg (%d)\n", argc );
+		exit(-1);
 	}
 
 	// open com port
@@ -37,6 +36,9 @@ int main( int argc, char **argv )
   if (pathCom == -1) {
     fprintf( stderr, "ERROR(%d): can't open com port\n", __LINE__ );
   }
+  stat_cur = stat_org | TIOCM_DTR;	// DTR to LOW
+  ret = ioctl( pathCom, TIOCMSET, &stat_cur );  // turn on DTR
+
 	fprintf( stderr, "115200 bps only!\n" );
 	fprintf( stderr, "Push a CTRL-C key for a termnation\n" );
 
@@ -51,13 +53,11 @@ int main( int argc, char **argv )
 
   ret = ioctl( pathCom, TIOCMGET, &stat_org );
 
-  stat_cur = stat_org & (~TIOCM_DTR);	// DTR to HIGH
-  ret = ioctl( pathCom, TIOCMSET, &stat_cur );  // clear DTR
-
 	tcflush( pathCom, TCIFLUSH);
 	tcflush( pathCom, TCOFLUSH);
 	tcflush( STDIN_FILENO, TCIFLUSH);
 	tcflush( STDOUT_FILENO, TCOFLUSH);
+
 	//fpurge( stdout );
 
 	initscr();
@@ -66,6 +66,14 @@ int main( int argc, char **argv )
 	cbreak();
 	raw();
 	timeout(0);
+	clear();
+
+  stat_cur = stat_org & (~TIOCM_DTR);	// DTR to HIGH
+  ret = ioctl( pathCom, TIOCMSET, &stat_cur );  // clear DTR
+
+	fprintf( stdout, "115200 bps only!\n" );
+	fprintf( stdout, "Push a CTRL-C key for a termnation\n" );
+	//fflush(stdout);
 
 	for(;;) {
 		len = read( pathCom, &cc_from_kurumi, sizeof(cc_from_kurumi) );
@@ -102,6 +110,7 @@ int main( int argc, char **argv )
 
   stat_cur &= (~TIOCM_DTR);
   ret = ioctl( pathCom, TIOCMSET, &stat_cur );  // set DTR
+	close( pathCom );
 
 	return ret;
 }
