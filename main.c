@@ -36,6 +36,7 @@ int main( int argc, char **argv )
   if (pathCom == -1) {
     fprintf( stderr, "ERROR(%d): can't open com port\n", __LINE__ );
   }
+
   stat_cur = stat_org | TIOCM_DTR;	// DTR to LOW
   ret = ioctl( pathCom, TIOCMSET, &stat_cur );  // turn on DTR
 
@@ -59,6 +60,8 @@ int main( int argc, char **argv )
 	tcflush( STDOUT_FILENO, TCOFLUSH);
 
 	//fpurge( stdout );
+
+	sleep( 1 );
 
 	initscr();
 
