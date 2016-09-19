@@ -13,7 +13,7 @@
 # a cli command, "ls /dev/cu.u*" with MacOSX.
 #
 # You will execute the terminal by typing 
-# a cli command, "./term4gr-kurumi <the ftdi device path> 
+# a cli command, "./term4gr-kurumi (the ftdi device path) 
 #
 #【既知のバグ】
 #（１）FTDIに残る前のデータが消せずに、前の表示が若干残ります。
