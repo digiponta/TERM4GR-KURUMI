@@ -1,4 +1,4 @@
-# Very Simple Writer to GR-KURUMI for MacOSX
+# Very Simple Terminal to GR-KURUMI for MacOSX
 # the source codes offered with BSD license
 # made by H. Inomata, (C)2013
 
