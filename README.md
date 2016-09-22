@@ -14,7 +14,7 @@
 # You will make this by typing a cli command, "make".
 #
 # You mai find a USB FTDI devices 
-# by executing the cli, "ls /dev/tyyUSB*"
+# by executing the cli, "ls /dev/ttyUSB*"
 #
 # You will execute the terminal by typing 
 # a cli command, "./term4gr-kurumi (the ftdi device path) 
