@@ -7,7 +7,7 @@ This is the branch for Raspbian.
 You need to install libncurses5-dev and libncursesw5-dev:
 # apt-get install libncurses5-dev and libncursesw5-dev
 
-You mai find a USB FTDI devices by executing the cli, "ls /dev/yytUSB*"
+You mai find a USB FTDI devices by executing the cli, "ls /dev/ttyUSB*"
 */
 
 #include <stdio.h>
