@@ -16,7 +16,11 @@
 # a cli command, "./term4gr-kurumi (the ftdi device path) 
 #
 #【既知のバグ】
-#（１）FTDIに残る前のデータが消せずに、前の表示が若干残ります。
+# (1) FTDIに残る前のデータが消せずに、前の表示が若干残ります。
 #　バグが解消してるかもしれません。(2016/9/18)
+#  ↑修正済み
+# (2) miss to call "ret = ioctl( pathCom, TIOCMGET, &stat_org );"
+#  ↑修正済み(2016/09/26)
 #
+
 
