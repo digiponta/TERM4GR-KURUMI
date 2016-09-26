@@ -2,5 +2,5 @@
 # the source codes offered with BSD license
 # made by H. Inomata, (C)2013
 
-vsw2gr-kurumi:
+term4gr-kurumi:
 	cc -lncurses -o term4gr-kurumi main.c
