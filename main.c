@@ -123,8 +123,8 @@ int main( int argc, char **argv )
 
 	endwin();
 
-  stat_cur &= (~TIOCM_DTR);
-  ret = ioctl( pathCom, TIOCMSET, &stat_cur );  // set DTR
+	// stat_cur &= (~TIOCM_DTR);
+	ret = ioctl( pathCom, TIOCMSET, &stat_org );  // set DTR
 	close( pathCom );
 
 	return ret;
