@@ -43,8 +43,10 @@ int main( int argc, char **argv )
 	    fprintf( stderr, "ERROR(%d): can't open com port\n", __LINE__ );
 	  }
 
-	  stat_cur = stat_org | TIOCM_DTR;	// DTR to LOW
-	  ret = ioctl( pathCom, TIOCMSET, &stat_cur );  // turn on DTR
+	ret = ioctl( pathCom, TIOCMGET, &stat_org );
+	
+	stat_cur = stat_org | TIOCM_DTR;	// DTR to LOW
+	ret = ioctl( pathCom, TIOCMSET, &stat_cur );  // turn on DTR
 
 	fprintf( stderr, "115200 bps only!\n" );
 	fprintf( stderr, "Push a CTRL-C key for a termnation\n" );
