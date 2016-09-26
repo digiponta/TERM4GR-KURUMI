@@ -26,5 +26,6 @@
 #
 # (2) Carriage Return code showns double ones.
 # 
-
+# (3) 呼び忘れ「ret = ioctl( pathCom, TIOCMGET, &stat_org );」
+#  ↑ ALREADY FIXED (20160926)
 
