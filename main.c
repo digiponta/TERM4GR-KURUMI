@@ -37,6 +37,8 @@ int main( int argc, char **argv )
     fprintf( stderr, "ERROR(%d): can't open com port\n", __LINE__ );
   }
 
+  ret = ioctl( pathCom, TIOCMGET, &stat_cur );  // turn on DTR
+
   stat_cur = stat_org | TIOCM_DTR;	// DTR to LOW
   ret = ioctl( pathCom, TIOCMSET, &stat_cur );  // turn on DTR
 
