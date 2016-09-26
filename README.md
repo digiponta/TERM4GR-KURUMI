@@ -28,4 +28,6 @@
 # 
 # (3) 呼び忘れ「ret = ioctl( pathCom, TIOCMGET, &stat_org );」
 #  ↑ ALREADY FIXED (20160926)
-
+#
+# (4) 特定のFTDIで、DTR信号が反転する不具合(FTDI内蔵のEPROMの設定が戻らない)。FTDI専用ツールで回復すれう必要がある。
+#
